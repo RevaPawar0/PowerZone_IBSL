@@ -5,7 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PowerZone | Training Classes & Weekly Schedule | Shirdi</title>
   <meta name="description" content="Explore PowerZone's signature athletic disciplines: Burn & Build, Iron & Alloy Powerlifting, Reset & Rebuild, Velocity 30. Book your first trial class at Shirdi HQ.">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Base styles -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <!-- Shared components -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <!-- Page specific (Classes) -->
+  <link rel="stylesheet" href="css/pages/classes/schedule.css">
+  <link rel="stylesheet" href="css/pages/classes/filters.css">
+  <link rel="stylesheet" href="css/pages/classes/trainers.css">
+  <!-- Cart & Checkout drawer/modals -->
+  <link rel="stylesheet" href="css/pages/shop/cart-drawer.css">
+  <link rel="stylesheet" href="css/pages/shop/checkout.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
 </head>
 <body data-theme="dark">
@@ -751,14 +767,26 @@
     </div>
   </div>
 
-  <!-- Supabase Official JS SDK & PowerZone Central Database Module -->
+  <!-- Supabase Official JS SDK & PDF Engine -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-client.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="js/db.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/modals.js"></script>
-  <script src="js/main.js"></script>
+
+  <!-- Core & Database Modules -->
+  <script src="js/core/supabase-client.js"></script>
+  <script src="js/database/orders-db.js"></script>
+  <script src="js/database/leads-db.js"></script>
+  <script src="js/database/members-db.js"></script>
+  <script src="js/core/theme.js"></script>
+  <script src="js/core/auth.js"></script>
+
+  <!-- Shop & Cart Dependencies for Quick Purchases -->
+  <script src="js/shop/products-data.js"></script>
+  <script src="js/shop/cart-manager.js"></script>
+  <script src="js/shop/checkout-handler.js"></script>
+
+  <!-- Classes Specific Modules & Modals -->
+  <script src="js/home/trial-lead.js"></script>
+  <script src="js/classes/schedule-tabs.js"></script>
+  <script src="js/classes/class-filter.js"></script>
 </body>
 </html>

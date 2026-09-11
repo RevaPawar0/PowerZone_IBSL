@@ -5,7 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PowerZone | Premier Gym & Sports Store | Shirdi, Maharashtra</title>
   <meta name="description" content="PowerZone is Shirdi's premier dark-luxury athletic gym and official sports equipment store. 24/7 biometric access, Olympic lifting, cricket gear, turf shoes, and trophies on Nagar-Manmad Highway.">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Base styles -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <!-- Shared components -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <!-- Page specific (Home) -->
+  <link rel="stylesheet" href="css/pages/home/hero.css">
+  <link rel="stylesheet" href="css/pages/home/bmi.css">
+  <link rel="stylesheet" href="css/pages/home/programs.css">
+  <link rel="stylesheet" href="css/pages/home/trial.css">
+  <!-- Cart & Checkout drawer/modals for quick purchases -->
+  <link rel="stylesheet" href="css/pages/shop/cart-drawer.css">
+  <link rel="stylesheet" href="css/pages/shop/checkout.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
 </head>
 <body data-theme="dark">
@@ -1001,16 +1018,30 @@
     </div>
   </div>
 
-  <!-- Supabase Official JS SDK & PowerZone Central Database Module -->
+  <!-- Supabase Official JS SDK & PDF Engine -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-client.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Core & Database Modules -->
+  <script src="js/core/supabase-client.js"></script>
+  <script src="js/database/orders-db.js"></script>
+  <script src="js/database/leads-db.js"></script>
+  <script src="js/database/members-db.js"></script>
+  <script src="js/core/theme.js"></script>
+  <script src="js/core/auth.js"></script>
+
+  <!-- Visual Particles FX -->
   <script src="js/particles.js"></script>
-  <script src="js/db.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/modals.js"></script>
-  <script src="js/main.js"></script>
+
+  <!-- Shop & Cart Dependencies for Quick Purchase -->
+  <script src="js/shop/products-data.js"></script>
+  <script src="js/shop/cart-manager.js"></script>
+  <script src="js/shop/checkout-handler.js"></script>
+
+  <!-- Home Page Specific Features -->
+  <script src="js/home/hero-ticker.js"></script>
+  <script src="js/home/bmi-calculator.js"></script>
+  <script src="js/home/trial-lead.js"></script>
 </body>
 </html>
 

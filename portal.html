@@ -5,127 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PowerZone | Store Owner Management Portal & CRM</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Base styles -->
+  <link rel="stylesheet" href="css/base/variables.css">
+  <link rel="stylesheet" href="css/base/reset.css">
+  <link rel="stylesheet" href="css/base/typography.css">
+  <!-- Shared components -->
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/buttons.css">
+  <link rel="stylesheet" href="css/components/modals.css">
+  <link rel="stylesheet" href="css/components/toast.css">
+  <!-- Page specific (Portal) -->
+  <link rel="stylesheet" href="css/pages/portal/kpi.css">
+  <link rel="stylesheet" href="css/pages/portal/orders-table.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>">
-  <style>
-    .portal-body {
-      background: var(--bg-primary);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .portal-nav {
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--border-medium);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-    }
-    .portal-auth-container {
-      max-width: 440px;
-      margin: 4rem auto;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-medium);
-      border-radius: var(--radius-xl);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg), 0 0 35px var(--primary-subtle);
-      text-align: center;
-    }
-    .portal-dashboard-container {
-      max-width: 1240px;
-      margin: 2rem auto 4rem auto;
-      padding: 0 1.5rem;
-      width: 100%;
-    }
-    .portal-kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-    }
-    .portal-kpi-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-    .portal-kpi-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--primary);
-    }
-    .portal-kpi-card.gold::before { background: var(--secondary); }
-    .portal-kpi-card.green::before { background: var(--accent-green); }
-    .portal-kpi-card.cyan::before { background: var(--accent-cyan); }
-    .kpi-number {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--text-primary);
-      line-height: 1.1;
-      margin-bottom: 0.35rem;
-    }
-    .kpi-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-    .stock-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-    .stock-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all var(--transition-fast);
-    }
-    .stock-card:hover {
-      border-color: var(--primary-border);
-    }
-    .stock-card-img {
-      width: 64px;
-      height: 64px;
-      border-radius: var(--radius-sm);
-      object-fit: cover;
-      background: var(--bg-secondary);
-    }
-    .stock-toggle-btn {
-      padding: 0.35rem 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-    }
-    .stock-toggle-btn.in-stock {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--accent-green);
-      border: 1px solid var(--accent-green);
-    }
-    .stock-toggle-btn.out-stock {
-      background: rgba(239, 68, 68, 0.15);
-      color: #ef4444;
-      border: 1px solid #ef4444;
-    }
-  </style>
 </head>
 <body class="portal-body" data-theme="dark">
 
@@ -317,11 +210,22 @@
 
   </main>
 
-  <!-- Javascript Core & Live Supabase Integration -->
+  <!-- Supabase Official JS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase-client.js"></script>
-  <script src="js/db.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/portal.js"></script>
+
+  <!-- Core & Database Modules -->
+  <script src="js/core/supabase-client.js"></script>
+  <script src="js/database/orders-db.js"></script>
+  <script src="js/database/leads-db.js"></script>
+  <script src="js/database/members-db.js"></script>
+  <script src="js/core/theme.js"></script>
+
+  <!-- Product Catalog for Stock Toggle Management -->
+  <script src="js/shop/products-data.js"></script>
+
+  <!-- Portal CRM Modules -->
+  <script src="js/portal/portal-kpi.js"></script>
+  <script src="js/portal/portal-orders.js"></script>
+  <script src="js/portal/portal-actions.js"></script>
 </body>
 </html>
