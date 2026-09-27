@@ -1,0 +1,97 @@
+/* ==========================================================================
+   POWERZONE : GYM & SPORTS STORE
+   CTA Banner, Free Pass Ticket & Quiz Flow (Home Page)
+   ========================================================================== */
+
+/* --- CTA Banner Section --- */
+.cta-banner {
+  background: var(--cta-bg-gradient);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-xl);
+  padding: 4.5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cta-banner h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.25rem; }
+.cta-banner p { font-size: 1.1rem; margin-bottom: 2rem; }
+
+/* --- QR Gym Pass Ticket --- */
+.gym-pass-ticket {
+  background: var(--ticket-bg);
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.gym-pass-ticket::before,
+.gym-pass-ticket::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: var(--bg-surface);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.gym-pass-ticket::before { left: -8px; }
+.gym-pass-ticket::after { right: -8px; }
+
+.pass-qr-mock {
+  width: 130px;
+  height: 130px;
+  margin: 1rem auto;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Quiz Steps & Option Buttons --- */
+.quiz-step { display: none; }
+.quiz-step.active { display: block; animation: fadeIn 0.3s ease; }
+
+.quiz-options-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.quiz-opt-btn {
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+.quiz-opt-btn:hover,
+.quiz-opt-btn.selected {
+  border-color: var(--primary);
+  background: var(--primary-subtle);
+  color: var(--primary);
+}

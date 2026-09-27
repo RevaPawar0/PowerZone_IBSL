@@ -1,0 +1,57 @@
+/* ==========================================================================
+   POWERZONE : GYM & SPORTS STORE
+   Checkout Form & Order Confirmation Success Card (shop.html)
+   ========================================================================== */
+
+/* --- COD Option Radio Box --- */
+.payment-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.payment-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.payment-radio-option:hover,
+.payment-radio-option.selected {
+  border-color: var(--primary);
+  background: var(--primary-subtle);
+}
+
+.payment-radio-option input[type="radio"] {
+  accent-color: var(--primary);
+}
+
+/* --- Success Order State (Green Card) --- */
+.order-success-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--accent-green);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.order-success-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--accent-green);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem auto;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+}

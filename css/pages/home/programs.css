@@ -1,0 +1,581 @@
+/* ==========================================================================
+   POWERZONE : GYM & SPORTS STORE
+   Training Programs, Geo-Radar, Crowd Meter & Athlete Reviews (Home Page)
+   ========================================================================== */
+
+/* --- High-Tech Geo-Radar Location Terminal --- */
+.radar-terminal-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 35px var(--primary-subtle);
+  position: relative;
+}
+
+.radar-terminal-header {
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.radar-beacon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+.radar-ping-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  position: relative;
+}
+
+.radar-ping-dot::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.6;
+  animation: radarPing 1.8s infinite cubic-bezier(0, 0.2, 0.8, 1);
+}
+
+@keyframes radarPing {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+.radar-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 900px) {
+  .radar-grid { grid-template-columns: 1fr; }
+}
+
+.map-container-frame {
+  position: relative;
+  min-height: 380px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.map-container-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 0;
+  display: block;
+}
+
+.radar-info-pane {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-surface);
+}
+
+.landmark-chips-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.landmark-chip {
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.landmark-chip:hover {
+  border-color: var(--primary);
+  background: var(--primary-subtle);
+  transform: translateX(4px);
+}
+
+.landmark-chip .time-tag {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--secondary);
+}
+
+.radar-action-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 540px) {
+  .radar-action-group { grid-template-columns: 1fr; }
+}
+
+/* --- Real-Time Gym Occupancy & Crowd Meter --- */
+.occupancy-widget {
+  background: var(--bg-glass-heavy);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  max-width: 580px;
+}
+
+.occupancy-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.occupancy-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-green);
+}
+
+.occupancy-chart-toggle {
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.occupancy-meter-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.occupancy-meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-green) 0%, var(--secondary) 70%, var(--primary) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.6s ease;
+}
+
+/* Peak Hours Mini Chart (Toggleable) */
+.peak-hours-chart {
+  display: none;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 4px;
+  align-items: flex-end;
+  height: 65px;
+  padding-top: 1rem;
+  margin-top: 0.85rem;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.peak-hours-chart.active {
+  display: grid;
+  animation: fadeIn 0.3s ease;
+}
+
+.peak-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.peak-bar-fill {
+  width: 100%;
+  background: var(--border-medium);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.peak-bar-col:hover .peak-bar-fill,
+.peak-bar-col.current .peak-bar-fill {
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+.peak-hour-txt {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* --- 2-Click Workout Goal Generator --- */
+.blueprint-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.25rem;
+  box-shadow: var(--shadow-lg), 0 0 35px var(--primary-subtle);
+  position: relative;
+}
+
+.blueprint-tabs-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.blueprint-tab-btn {
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.blueprint-tab-btn:hover,
+.blueprint-tab-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+.blueprint-content-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .blueprint-content-grid { grid-template-columns: 1fr; }
+}
+
+.blueprint-split-days {
+  display: grid;
+  gap: 1rem;
+}
+
+.split-day-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.split-day-card:hover {
+  border-color: var(--border-glow);
+  transform: translateX(4px);
+}
+
+.split-day-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.split-day-header h4 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.split-exercises-txt {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.blueprint-gear-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.gear-box-thumb {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 1rem 0;
+  background: var(--bg-secondary);
+}
+
+.gear-box-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Why Choose Us Grid */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.why-card {
+  padding: 2.2rem 1.8rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  position: relative;
+  transition: all var(--transition-normal);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.why-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg), 0 0 20px var(--primary-subtle);
+}
+
+.why-card:hover::before { opacity: 1; }
+
+.why-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.why-card:hover .why-icon {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: scale(1.05);
+}
+
+.why-title { margin-bottom: 0.75rem; font-size: 1.25rem; }
+.why-desc { font-size: 0.92rem; line-height: 1.6; }
+
+/* Offerings & Training Pillars */
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.offering-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.offering-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.offering-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offering-card:hover .offering-img-wrap img { transform: scale(1.08); }
+
+.offering-badge-floating {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.offering-content {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.offering-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.offering-title { font-size: 1.35rem; margin-bottom: 0.65rem; }
+.offering-desc { font-size: 0.9rem; margin-bottom: 1.25rem; flex-grow: 1; }
+
+/* Authentic Athlete Reviews */
+.transform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+}
+
+.review-card {
+  padding: 2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.reviewer-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.reviewer-meta h4 {
+  font-size: 1.15rem;
+  margin-bottom: 0.2rem;
+  color: var(--text-primary);
+}
+
+.reviewer-tag {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.25rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.review-quote {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.metrics-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.metric-box { text-align: center; }
+
+.metric-val {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--secondary);
+}
+
+.metric-val.green { color: var(--accent-green); }
+
+.metric-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}

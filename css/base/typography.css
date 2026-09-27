@@ -1,0 +1,29 @@
+/* ==========================================================================
+   POWERZONE : GYM & SPORTS STORE
+   Typography, Headings & Text Color Helpers
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
+h2 { font-size: clamp(1.85rem, 3.5vw, 2.75rem); }
+h3 { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+h4 { font-size: 1.25rem; font-weight: 700; }
+p { color: var(--text-secondary); }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 20%, var(--primary) 70%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-crimson { color: var(--primary); }
+.text-gold { color: var(--secondary); }
+.text-green { color: var(--accent-green); }
